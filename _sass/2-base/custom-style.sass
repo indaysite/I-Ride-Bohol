@@ -1,0 +1,253 @@
+.bg-slant   
+   background:
+      image: url('../img/slant-bg.png')
+      repeat: repeat
+      size: 12px
+      
+.price
+   margin-top: 1rem
+   font-size: 1.2rem
+   background-color: $section-alt
+   font-weight: 400
+   border: 1px solid $border
+   +display(inline-block)
+   padding: .3rem 1rem
+      
+.vertical-middle
+   white-space: nowrap
+   text-align: center
+   
+   &:before
+      content: ''
+      height: 100%
+      vertical-align: middle
+      +display(inline-block)
+      
+   img
+      vertical-align: middle
+      
+      
+.rent-now
+   font-size: 2rem
+   font-weight: 700
+   line-height: 1
+   
+.sub-title
+   font-size: 19px
+   font-size: 1.2rem
+   margin-bottom: .7rem
+   font-weight: 400
+   line-height: 1
+   +display(inline-block)
+      
+.cap
+   text-transform: uppercase
+   
+.copyright
+   font-size: 12px
+   
+
+.see-full-screen   
+   border-bottom: 1px dotted $border
+   
+.back-to-top
+   +display(none)
+   +size(42px)
+   background-color: lighten($border, 10)
+   z-index: 1
+   border-radius: 50%
+   margin-top: -25px
+   cursor: pointer
+   +position(fixed, null 15px 15px null)
+   text-align: center
+   color: darken($border, 40)
+   
+   &:before
+      content: 'top'
+      +display(inline-block)
+      margin-top: 8px
+
+   &.active-btt
+      +display(block)
+   
+   @media screen and (min-width: 768px)
+      +size(50px)
+      +position(fixed, 50% 15px null null)
+      +transition-duration(.2s)
+      +transition-timing-function(ease-out)
+
+      &:hover
+         background-color: $p-color
+         color: $section-main
+
+      &:before
+         margin-top: 11px
+      
+.content-title
+   z-index: 1
+   text-align: left
+   text-transform: uppercase
+   color: $section-alt-darkblue
+   +position(relative) 
+   
+   &:before
+      content: ""
+      height: 1px
+      z-index: -1
+      background-color: $section-alt-darkblue
+      +position(absolute, 50% 0px null 0px)        
+   
+   span
+      background-color: $section-main
+      +display(inline-block)
+      +transition()
+         
+   &.text-center
+      text-align: center
+      
+      span
+         padding: 0px .5rem
+      
+   &.text-left
+      text-align: center
+      
+      span
+         padding: 0px .5rem
+      
+      @media screen and (min-width: 768px)
+         text-align: left
+   
+         span
+            padding-right: .5rem
+            padding-left: 0px
+               
+   &.alt
+      color: $section-alt
+      
+      &:before
+         background-color: $section-alt
+      
+      span
+         background-color: $section-alt-darkblue
+      
+   &.alt-db      
+      span
+         background-color: $section-alt  
+         
+         
+
+.article
+   margin: 0px auto
+   width: 100%
+   max-width: 320px
+   +display(block)   
+   text-align: left
+   border: 1px solid $border
+   color: $section-alt-darkblue
+   +transition()
+   background-color: $section-alt
+
+   .img
+      +flex-grow(1)
+      @extend .vertical-middle
+      height: 300px
+      background-color: $section-main
+
+      img
+         max-width: 90%
+         max-height: 80%
+
+   .text
+      +flex(0 0 250px)
+      +display(flex)
+      +flex-direction(column)
+      border-left: 0px
+      background-color: transparent
+      padding: 1rem 0px 1.5rem
+      border-top: 1px solid $border
+
+      .title
+         @extend .content-title
+         @extend .text-center
+         padding: .5rem 0px 
+         +transition()
+
+         span
+            background-color: $section-alt
+
+      .details-flex
+         +flex-grow(1)
+         margin: 0px 1rem
+         +display(flex)
+         +flex-wrap(wrap)
+
+         &.details-block
+            +display(block)
+
+            p
+
+               &:nth-child(even)
+                  padding-left: 0px
+
+         p
+            +flex(1 0 50%)
+
+            &:nth-child(even)
+               padding-left: 1rem
+
+            svg
+               margin: 0px .2rem -.1rem
+               +size(1.2rem)
+               fill: $section-alt-darkblue
+
+      .price
+         +display(block)
+         margin: .5rem 1rem 0px
+         +position(relative)
+         +transition()
+         z-index: 1
+         text-align: center
+         overflow: hidden
+         min-width: 200px
+         background-color: $section-alt-peach
+
+   @media screen and (min-width: 560px)
+      max-width: none
+                              
+   @media screen and (min-width: 768px)
+      background-color: $section-alt
+      width: 277px
+      +display(inline-block)
+
+      .text
+         +display(block)
+         background-color: transparent
+         border-left: 0px
+
+   @media screen and (min-width: 992px)
+      width: 290px
+      +transition()
+
+      &:hover
+         .text .price
+            &:before
+               left: -19px
+
+      .text                     
+         .title
+            +transition()
+
+         .price    
+            background-color: $section-alt
+
+            &:before
+               content: ''
+               z-index: -1
+               +transition(all .2s ease-out)
+               +size(calc(38px + 100%) 100%)
+               +transform(skew(-45deg))
+               background-color: $section-alt-peach
+               +position(absolute, 0px null null calc(100% + 19px))
+                              
+   @media screen and (min-width: 1200px)
+      width: 350px

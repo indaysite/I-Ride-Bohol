@@ -1,0 +1,140 @@
+#articles
+   border-top: 1px solid rgba($section-alt-blue, .4)
+   border-bottom: 1px solid rgba($section-alt-blue, .4)
+   overflow: hidden
+   @extend .bg-slant
+
+   .articles-container     
+      .rent-container
+         +display(none)
+            
+         .rent-cta
+            p
+               @extend .rent-now
+
+      .articles-container-flex
+         +display(block)
+         margin-bottom: -1rem
+
+         .article-support
+            margin-bottom: 2rem
+
+@media screen and (min-width: 560px)
+   #articles
+      .articles-container    
+         .articles-container-flex
+            +display(flex)
+            +flex-wrap(wrap)
+            +justify-content(space-between)
+               
+            .article-support
+               +flex-basis(calc(50% - .5rem))
+                              
+@media screen and (min-width: 768px)
+   #articles
+      .articles-container                  
+         .rent-container
+            +display(block)
+            z-index: 1
+            +position(absolute, 0px null null 50%)
+            padding: 7px
+            margin-left: -65px
+            +size(130px auto)
+            text-align: center
+            background-color: $section-alt-peach
+
+            &:before
+               content: ""
+               background-color: $section-alt-peach
+               +position(absolute, null null -6px 0px)
+               +size(100% 3px)
+
+            &:after
+               content: ""
+               z-index: -1
+               +position(absolute, 10px 10px 10px 10px)
+               border: 1px solid $section-alt-darkblue
+               background-color: $section-alt-peach         
+
+            .rent-img
+               +size(90px)
+               +display(inline-block)
+               margin: 30px 0px 12px
+
+               svg
+                  +size(100%)
+                  fill: $section-alt-darkblue
+
+            .rent-blurb
+               margin-bottom: 2rem
+
+            .rent-add
+               +display(none)
+
+            .rent-cta
+               +position(relative)
+               +size(100% 160px)
+               z-index: 1
+               text-transform: uppercase
+               +display(block)
+               margin: 1rem auto 0px
+               text-align: center
+               line-height: 160px
+               background-color: $section-alt-darkblue
+
+               svg
+                  +display(none)
+                  fill: $section-alt-darkblue
+                  z-index: -1
+                  +size(100%)
+                  +position(absolute, 0px null null 0px)
+
+               p
+                  +display(inline-block)
+                  width: 100%
+                  vertical-align: middle
+                  margin-bottom: 0px
+                  color: $section-main
+
+               &:hover
+                  .rent-now
+                     color: $rent-now    
+               
+         .articles-container-flex
+            +display(flex)
+            +flex-wrap(wrap)
+            margin-right: 0px
+            
+            .article-support
+               +flex-basis(50%)
+               +flex-shrink(0)
+               margin-right: 0px
+
+               &:nth-child(even)
+                  text-align: right
+
+@media screen and (min-width: 992px)
+   #articles
+      .articles-container    
+         .rent-container
+            +size(266px auto)
+            margin-left: -133px
+
+            .rent-add
+               +display(block)
+
+            .rent-cta
+               margin: 1rem auto
+               background-color: transparent
+
+               svg
+                  +display(block)
+                     
+               .rent-now
+                  width: 100px
+                  
+         .articles-container-flex
+            margin-bottom: -3rem
+            
+            .article-support
+               margin-bottom: 3rem

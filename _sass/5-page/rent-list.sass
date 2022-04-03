@@ -1,0 +1,50 @@
+.rent-list-container   
+   .rent-list-flex
+      +display(flex)
+      +flex-wrap(wrap)
+      +align-items(flex-start)
+      +justify-content(flex-start)       
+
+      &:last-of-type
+         margin-bottom: -2rem
+
+      .article
+         max-width: 320px
+         margin: 0px auto 2rem
+         
+         .text
+            .price
+               &:before
+                  +display(none)
+
+@media screen and (min-width: 635px)
+   .rent-list-container .rent-list-flex      
+      margin: 0px -.5rem
+
+      &:last-of-type
+         margin-bottom: -1rem
+
+      .article
+         max-width: none
+         +flex-basis(calc((100% / 2) - 1rem))
+         margin: 0px .5rem 1rem
+
+@media screen and (min-width: 992px)
+   .rent-list-container .rent-list-flex .article
+      +flex-basis(calc((100% / 3) - 1rem))
+
+      &:hover         
+         .text .details-flex
+            max-height: 500px
+         
+      .text
+         .details-flex
+            max-height: 0px
+            overflow: hidden
+            +transition-duration(1s)
+            +transition-timing-function(ease-out)
+         
+@media screen and (min-width: 1200px)
+   .rent-list-container .rent-list-flex .article
+      +flex-basis(calc((100% / 4) - 1rem))
+
