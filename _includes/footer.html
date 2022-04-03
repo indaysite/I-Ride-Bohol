@@ -1,0 +1,84 @@
+<footer id='footer'>
+   <div class='container'>
+      <div class='footer-container-flex'>
+         <div class='f-item fb-comment'>
+            <h2 class='content-title alt text-left'><span>we are very greatful</span></h2> 
+            <div class='fb-comment-container'>  
+               <div class='fb-comments' data-href="{% for fb in site.data.settings.social %}{% if fb.name == 'Facebook' %} {{fb.url}}{% endif %}{% endfor %}" data-numposts='2'></div>
+            </div>
+         </div>
+
+         <div class='f-item'>
+            <h2 class='content-title alt text-left'><span>page</span></h2>
+            <ul class='sub-items'>
+               {% for menu in site.data.settings.menu %}
+               <li class='sub-item'><a href='{{site.baseurl}}/{{menu.url}}/'>{{menu.name}}</a></li>
+               {% endfor %}
+            </ul>            
+         </div>
+
+         <div class='f-item'>
+            <h2 class='content-title alt text-left'><span>cars</span></h2>
+            <ul class='sub-items'>
+               {% assign items = site.for-rent | where: 'category', 'car' %}
+               {% for post in items %}
+               <li class='sub-item'><a href='{{site.baseurl}}{{post.url}}'><span class='cap'>{{post.brand}}</span>: {{post.model}} {% if post.suffix %}- {{ post.suffix }} {% endif %}</a></li>
+               {% endfor %}
+            </ul>
+         </div>         
+      </div>  
+   </div>   
+
+   <section id='copyright'>
+      <div class='container copyright-container'>
+         <p class='smaller'>© Copyright 2017 <a href='{{site.url}}'>{{site.data.settings.title}}</a> All Rights Reserved. Designed by <a href='/'>{{site.data.settings.author}}</a></p>
+      </div>
+   </section>
+</footer>
+
+{% if page.lightbox-rent %}
+   {% include lightbox-rent.html %}
+{% endif %}
+
+{% if page.lightbox-call %}
+   {% include lightbox-call.html %}
+{% endif %}
+
+{% include back-to-top.html %}
+
+<script src='{{site.baseurl}}/assets/js/jquery-1.9.1.min.js'></script>
+<script src='{{site.baseurl}}/assets/js/functions.js'></script>
+
+{% if page.fixedRentContainer %}
+<script>
+   $(document).ready(function() {
+      var $rentNow = $('.rent-container'),
+          $rentNowHeight = $('.rent-container').height(),
+          $rentNowParent = $('#articles'),
+          $rentNowParentHeight = $('#articles').height();
+
+      var toFixed = function() {
+         var st = $(window).scrollTop();
+         var ot = $rentNowParent.offset().top;
+
+         if ( st > ot ) {
+            $rentNow.css({'position' : 'fixed', 'bottom' : '', 'top': ''});
+         }
+         
+         if ( st <= ot ) {
+            $rentNow.css({'position' : ''});
+         }
+         
+         if ( st + $rentNowHeight > ot + $rentNowParentHeight ) {
+            $rentNow.css({'bottom' : '10px', 'top' : 'auto', 'position' : ''});
+         }         
+      }
+      
+      $(window).scroll(toFixed);
+      toFixed();
+      })
+</script>
+{% endif %}
+
+</body>
+</html>
